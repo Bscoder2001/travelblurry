@@ -1,43 +1,88 @@
 import { useNavigate } from "react-router-dom";
 import PhoneFrame from "./PhoneFrame";
 
-/**
- * Shared chrome for planner flow: mobile keeps compact header; desktop uses homepage header.
- */
-const PlannerShell = ({
-  mobileHeaderLeft,
-  mobileHeaderRight,
-  children,
-  footer,
-  innerClassName = "",
-}) => {
-  const navigate = useNavigate();
+function PlannerShell(props)
+{
+    const
+    {
+        mobileHeaderLeft,
+        mobileHeaderRight,
+        children,
+        footer,
+        innerClassName = "",
+    } = props;
 
-  return (
-    <PhoneFrame planner>
-      <div className="planner-mobile-header app-header">
-        {mobileHeaderLeft ?? <span style={{ width: 40 }} />}
-        <span className="logo-text">travel<span className="logo-dot">blurry</span></span>
-        {mobileHeaderRight ?? <span style={{ width: 40 }} />}
-      </div>
+    const navigate = useNavigate();
 
-      <header className="h-header planner-desktop-header">
-        <span className="logo-text">travel<span className="logo-dot">blurry</span></span>
+    function handlePlanTripClick()
+    {
+        navigate("/mode-select");
+    }
 
-        <nav className="h-nav" aria-label="Main">
-          <a href="/plan-year" className="h-nav-link">Plan My Year</a>
-          <a href="/mode-select" className="h-nav-link">How it works</a>
-          <button type="button" className="h-nav-cta" onClick={() => navigate("/mode-select")}>Plan Trip</button>
-        </nav>
-      </header>
+    function renderLeftSlot()
+    {
+        if (mobileHeaderLeft)
+        {
+            return mobileHeaderLeft;
+        }
 
-      <div className={`content-scroll planner-content-scroll${innerClassName ? ` ${innerClassName}` : ""}`}>
-        {children}
-      </div>
+        return <span className="planner-header-spacer" />;
+    }
 
-      {footer}
-    </PhoneFrame>
-  );
-};
+    function renderRightSlot()
+    {
+        if (mobileHeaderRight)
+        {
+            return mobileHeaderRight;
+        }
+
+        return <span className="planner-header-spacer" />;
+    }
+
+    let scrollClass = "content-scroll planner-content-scroll md:min-h-screen md:bg-gradient-to-b md:from-slate-50 md:to-white";
+    if (innerClassName)
+    {
+        scrollClass += " ";
+        scrollClass += innerClassName;
+    }
+
+    return (
+        <PhoneFrame planner>
+            <div className="planner-mobile-header app-header">
+                {renderLeftSlot()}
+                <span className="logo-text">
+                    travel
+                    <span className="logo-dot">blurry</span>
+                </span>
+                {renderRightSlot()}
+            </div>
+
+            <header className="h-header planner-desktop-header">
+                <span className="logo-text">
+                    travel
+                    <span className="logo-dot">blurry</span>
+                </span>
+
+                <nav className="h-nav" aria-label="Main">
+                    <a href="/plan-year" className="h-nav-link">
+                        Plan My Year
+                    </a>
+                    <a href="/mode-select" className="h-nav-link">
+                        How it works
+                    </a>
+                    <button type="button" className="h-nav-cta" onClick={handlePlanTripClick}>
+                        Plan Trip
+                    </button>
+                </nav>
+            </header>
+
+            <div className={scrollClass}>
+                {children}
+            </div>
+
+            {footer}
+        </PhoneFrame>
+    );
+}
 
 export default PlannerShell;

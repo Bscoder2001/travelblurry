@@ -1192,7 +1192,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
 }
 
 /* ═══════════════════════════════════════════════════════
-   PLANNER FLOW — design system (desktop ≥768px; mobile unchanged)
+   PLANNER FLOW — SaaS UI (desktop ≥768px; mobile unchanged)
 ═══════════════════════════════════════════════════════ */
 
 .planner-page-shell .phone-frame {
@@ -1209,7 +1209,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
 
 @media (min-width: 768px) {
   .planner-page-shell {
-    background: linear-gradient(150deg, #edf1f8 0%, #e4ebf5 60%, #f0f4fa 100%);
+    background: #f3f4f6;
   }
 
   .planner-page-shell .phone-frame {
@@ -1232,10 +1232,10 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
     top: 0;
     z-index: 200;
     height: 60px;
-    padding: 0 32px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-light);
+    padding: 0 24px;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
   }
 
   .planner-desktop-header .h-nav {
@@ -1246,12 +1246,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
     display: none;
   }
 
+  /* max-w-5xl mx-auto px-6 */
   .planner-content-scroll {
-    max-width: 72rem !important;
+    max-width: 64rem !important;
     margin-left: auto !important;
     margin-right: auto !important;
     width: 100%;
-    padding: 2rem 1.5rem 3rem !important;
+    padding: 2rem 1.5rem 2.5rem !important;
     flex: 1;
   }
 
@@ -1259,7 +1260,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
     position: static !important;
     border-top: none !important;
     background: transparent !important;
-    max-width: 72rem !important;
+    max-width: 64rem !important;
     margin-left: auto !important;
     margin-right: auto !important;
     width: 100%;
@@ -1276,17 +1277,552 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   .planner-cta-row .planner-btn-primary {
     max-width: 28rem;
     width: 100%;
+    min-height: 2.75rem;
+    border-radius: 0.5rem;
+    background: #2563eb;
+    font-weight: 600;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+  }
+
+  .planner-cta-row .cta-btn:hover {
+    opacity: 0.95;
+  }
+
+  /* Section rhythm: mt-8 between blocks */
+  .planner-page-shell .planner-stack {
+    gap: 2rem;
+  }
+
+  /* Step label + titles */
+  .planner-page-shell .d-step-label,
+  .planner-page-shell .planner-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #2563eb;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .planner-page-shell .planner-page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.3;
+    margin: 0 0 0.375rem;
+  }
+
+  .planner-page-shell .planner-page-sub {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+
+  .planner-page-shell .planner-section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .planner-page-shell .d-page-meta {
+    margin-top: 0;
+  }
+
+  /* Stepper — subtle */
+  .planner-page-shell .planner-step-bar {
+    max-width: 48rem;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+  }
+
+  .planner-page-shell .planner-step-bar-inner {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #9ca3af;
+  }
+
+  .planner-page-shell .planner-step-bar-sep {
+    color: #d1d5db;
+    font-weight: 400;
+  }
+
+  .planner-page-shell .planner-step-bar-item {
+    color: #9ca3af;
+    font-weight: 400;
+  }
+
+  .planner-page-shell .planner-step-bar-item--done {
+    color: #9ca3af;
+    font-weight: 400;
+  }
+
+  .planner-page-shell .planner-step-bar-item--active {
+    color: #111827;
+    font-weight: 500;
+  }
+
+  .planner-page-shell .planner-step-bar-line {
+    height: 1px;
+    background: #e5e7eb;
+    margin-top: 0.75rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Containers — max-w-5xl inner content */
+  .planner-container--mode,
+  .planner-container--travel,
+  .planner-container--local,
+  .planner-container--stay,
+  .planner-container--food,
+  .planner-container--plan {
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  /* Mode select — center max-w-3xl, cards p-6 gap-5 */
+  .planner-container--mode {
+    max-width: 48rem;
+  }
+
+  .planner-page-shell .ms-head {
+    margin-bottom: 0;
+  }
+
+  .ms-grid.planner-ms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .planner-ms-grid .ms-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .planner-ms-grid .ms-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  }
+
+  .planner-ms-grid .ms-card--rec {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .planner-ms-grid .ms-card-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-ms-grid .ms-card-desc {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  .planner-ms-grid .ms-cta {
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .planner-ms-grid .ms-cta--primary {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+  }
+
+  .planner-ms-grid .ms-cta--secondary {
+    background: #fff;
+    color: #2563eb;
+    border: 1px solid #d1d5db;
+  }
+
+  /* Transport / Local — light cards, tight spacing */
+  .planner-corner-badge {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #1d4ed8;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    z-index: 1;
+  }
+
+  .planner-opt-with-badge {
+    position: relative;
+  }
+
+  .planner-page-shell .d-opt-card {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    margin-bottom: 0;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .planner-page-shell .d-opt-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06);
+  }
+
+  .planner-page-shell .d-opt-card--rec {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding-top: 1rem;
+  }
+
+  .planner-page-shell .d-opt-card--selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.08);
+  }
+
+  .planner-page-shell .travel-opt-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-page-shell .travel-opt-sub {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  .planner-page-shell .travel-opt-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: right;
+  }
+
+  .planner-page-shell .travel-opt-dur {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: right;
+    font-weight: 400;
+  }
+
+  .planner-page-shell .d-opt-price-col {
+    text-align: right;
+  }
+
+  .planner-page-shell .radio-circle {
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-color: #d1d5db;
+  }
+
+  .planner-page-shell .radio-circle.on::after {
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .planner-travel-options,
+  .planner-local-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .planner-page-shell .helper-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #9ca3af;
+    margin-top: 0.5rem !important;
+  }
+
+  /* Stay */
+  .planner-stay-grid-wrap .d-stay-rec {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    margin-bottom: 0.75rem;
+  }
+
+  .planner-stay-grid-wrap .d-stay-rec--selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+  }
+
+  .planner-stay-grid-wrap .d-stay-rec-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-stay-grid-wrap .d-stay-rec-sub {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  .planner-stay-grid-wrap .d-stay-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .planner-stay-grid-wrap .d-stay-card {
+    min-height: 0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+
+  .planner-stay-grid-wrap .d-stay-card--selected {
+    border-color: #2563eb;
+    background: #eff6ff;
+  }
+
+  .planner-stay-grid-wrap .stay-card-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-stay-grid-wrap .stay-card-price {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  /* Food — pills 40px, selected blue-600 / white */
+  .planner-food-pills .d-food-pills {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .planner-food-pills .d-food-pill {
+    min-height: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0 0.75rem;
+    border: 1px solid transparent;
+    background: #f3f4f6;
+    box-shadow: none;
+  }
+
+  .planner-food-pills .d-food-pill:hover {
+    background: #e5e7eb;
+  }
+
+  .planner-food-pills .d-food-pill--active {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #fff;
+  }
+
+  .planner-food-pills .d-food-pill--active .d-food-pill-label,
+  .planner-food-pills .d-food-pill--active .d-food-pill-sub {
+    color: #fff !important;
+  }
+
+  .planner-food-pills .d-food-pill-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .planner-food-pills .d-food-pill-sub {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    opacity: 0.95;
+  }
+
+  .planner-food-summary .d-food-card {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    margin-bottom: 0.75rem;
+  }
+
+  .planner-food-summary .seg-detail-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  .planner-food-summary .seg-detail-val {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-page-shell .d-food-notice {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Plan page */
+  .planner-page-shell .d-plan-title-row {
+    align-items: center;
+    margin-bottom: 0;
+    gap: 1rem;
+  }
+
+  .d-sum-row.planner-plan-sum-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 0;
+    flex-wrap: nowrap;
+  }
+
+  .planner-plan-sum-grid .d-sum-card {
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+
+  .planner-plan-sum-grid .d-sum-val {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .planner-plan-sum-grid .d-sum-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6b7280;
+    margin-top: 0.25rem;
+  }
+
+  .planner-page-shell .d-budget-bar-wrap {
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    box-shadow: none;
+  }
+
+  .planner-page-shell .d-budget-track {
+    border-radius: 9999px;
+  }
+
+  .planner-plan-day .d-day-block {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+
+  .planner-plan-day .day-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .planner-plan-day .day-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .planner-plan-day .day-tag {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .planner-plan-day .day-row {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .planner-plan-day .day-item-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  .planner-plan-day .day-item-detail {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: #6b7280;
+  }
+
+  .planner-plan-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .planner-plan-actions-grid .planner-plan-act {
+    min-height: 2.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .planner-plan-actions-grid .planner-plan-act--primary {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.15);
+  }
+
+  .planner-plan-actions-grid .planner-plan-act--secondary {
+    background: #fff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+  }
+
+  .planner-page-shell .d-share-btn {
+    border-color: #d1d5db;
+    color: #374151;
+    font-weight: 500;
   }
 }
 
 @media (min-width: 1024px) {
   .planner-desktop-header {
     height: 64px;
-    padding: 0 clamp(32px, 5vw, 80px);
+    padding: 0 clamp(24px, 5vw, 80px);
   }
 
   .planner-content-scroll {
-    padding: 2rem clamp(24px, 5vw, 80px) 4rem !important;
+    padding: 2rem clamp(24px, 5vw, 80px) 3rem !important;
   }
 
   .planner-page-shell .sticky-bottom {
@@ -1295,7 +1831,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   }
 }
 
-/* Step bar: Travel — Stay — … */
+/* Step bar — mobile defaults (unchanged tone) */
 .planner-step-bar {
   max-width: 48rem;
   margin: 0 auto 1.5rem;
@@ -1310,12 +1846,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   gap: 0.25rem 0.15rem;
   font-size: 11px;
   color: var(--text-tertiary);
-}
-
-@media (min-width: 768px) {
-  .planner-step-bar-inner {
-    font-size: 12px;
-  }
 }
 
 .planner-step-bar-sep {
@@ -1343,7 +1873,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   margin-right: auto;
 }
 
-/* Typography */
 .planner-eyebrow {
   font-size: 11px;
   font-weight: 700;
@@ -1369,17 +1898,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   margin: 0;
 }
 
-@media (min-width: 768px) {
-  .planner-page-title {
-    font-size: 1.5rem;
-  }
-
-  .planner-page-sub {
-    font-size: 0.875rem;
-    color: #6b7280;
-  }
-}
-
 .planner-section-label {
   font-size: 11px;
   font-weight: 600;
@@ -1399,7 +1917,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   margin-bottom: 0;
 }
 
-/* Containers */
 .planner-container--mode {
   width: 100%;
   max-width: 48rem;
@@ -1407,12 +1924,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
 }
 
 .planner-container--travel,
-.planner-container--local {
-  width: 100%;
-  max-width: 56rem;
-  margin: 0 auto;
-}
-
+.planner-container--local,
 .planner-container--stay,
 .planner-container--food {
   width: 100%;
@@ -1426,127 +1938,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   margin: 0 auto;
 }
 
-/* Mode select — desktop cards */
-@media (min-width: 768px) {
-  .ms-grid.planner-ms-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .planner-ms-grid .ms-card {
-    padding: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
-    transition: box-shadow 0.18s, border-color 0.18s;
-  }
-
-  .planner-ms-grid .ms-card:hover {
-    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  }
-
-  .planner-ms-grid .ms-card--rec {
-    background: #eff6ff;
-    border-color: #60a5fa;
-  }
-}
-
-.planner-corner-badge {
-  display: none;
-}
-
-/* Travel / Local — recommended corner badge (desktop) */
-@media (min-width: 768px) {
-  .planner-opt-with-badge {
-    position: relative;
-  }
-
+@media (max-width: 767px) {
   .planner-corner-badge {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 10px;
-    font-weight: 700;
-    color: #fff;
-    background: var(--blue-light);
-    padding: 3px 10px;
-    border-radius: 9999px;
-    z-index: 1;
-  }
-
-  .planner-page-shell .d-opt-card--rec {
-    position: relative;
-    border-color: #60a5fa;
-    background: #f8fafc;
-    padding-top: 2.5rem;
-  }
-
-  .planner-travel-options .d-opt-card,
-  .planner-local-options .d-opt-card {
-    margin-bottom: 0.5rem;
-  }
-
-  .planner-travel-options,
-  .planner-local-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: none;
   }
 }
 
-/* Stay — grid density */
-@media (min-width: 768px) {
-  .planner-stay-grid-wrap .d-stay-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-
-  .planner-stay-grid-wrap .d-stay-card {
-    min-height: 7.5rem;
-    justify-content: space-between;
-  }
-
-  .planner-stay-grid-wrap .d-stay-rec {
-    width: 100%;
-    border-color: #60a5fa;
-    background: #eff6ff;
-    margin-bottom: 1rem;
-  }
-}
-
-/* Food — pill control */
-@media (min-width: 768px) {
-  .planner-food-pills .d-food-pills {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .planner-food-pills .d-food-pill {
-    min-height: 3rem;
-    border-radius: 9999px;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-  }
-
-  .planner-food-pills .d-food-pill--active {
-    border-color: var(--blue);
-    background: var(--blue-hover);
-  }
-
-  .planner-food-summary .d-food-card {
-    border-radius: 0.5rem;
-    background: #f3f4f6;
-    border: 1px solid var(--border-light);
-    padding: 1.25rem 1.5rem;
-  }
-}
-
-/* Plan — summary grid & actions */
+/* Plan — mobile grid for actions */
 .d-sum-row.planner-plan-sum-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1588,48 +1986,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   opacity: 0.92;
 }
 
-@media (min-width: 768px) {
-  .d-sum-row.planner-plan-sum-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 1rem;
-    flex-wrap: nowrap;
-  }
-
-  .planner-plan-sum-grid .d-sum-card {
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
-    border: 1px solid var(--border-light);
-    background: #fff;
-  }
-
-  .planner-plan-day .d-day-block {
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
-    border: 1px solid var(--border-light);
-  }
-
-  .planner-plan-actions-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-  }
-
-  .planner-plan-actions-grid .planner-plan-act {
-    min-height: 3rem;
-    border-radius: 0.5rem;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .planner-plan-actions-grid .planner-plan-act--secondary {
-    background: #fff;
-  }
-}
-
 .planner-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -1651,11 +2007,198 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--page-bg);co
   opacity: 0.92;
 }
 
+/* Loading page — desktop only (narrow column, lighter progress) */
 @media (min-width: 768px) {
-  .planner-page-shell .cta-btn {
-    min-height: 3rem;
-    border-radius: 0.5rem;
-    background: #2563eb;
-    font-weight: 600;
+  .content-scroll .d-wrap.d-wrap--sm .d-loading-center {
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.25rem 0 1.5rem;
+    gap: 6px;
   }
+
+  .content-scroll .d-wrap.d-wrap--sm .loading-dots {
+    margin-bottom: 1rem !important;
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-load-prog-track {
+    height: 8px;
+    border-radius: 9999px;
+    max-width: 100%;
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-load-prog-fill {
+    border-radius: 9999px;
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-load-steps {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-load-step {
+    padding: 0.625rem 0;
+    border-bottom-color: #f3f4f6;
+    font-size: 0.8125rem;
+    font-weight: 400;
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-loading-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .content-scroll .d-wrap.d-wrap--sm .d-loading-sub {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+}
+
+/* Layout tokens (avoid inline styles in components) */
+.planner-header-spacer {
+  display: inline-block;
+  width: 40px;
+  min-height: 1px;
+}
+.planner-header-spacer--wide {
+  width: 60px;
+}
+.loading-dots--mb {
+  margin-bottom: 28px;
+}
+.loading-skip-btn {
+  max-width: 240px;
+  margin-top: 8px;
+}
+.d-load-prog-fill--pct-45 {
+  width: 45%;
+}
+.d-food-bar-fill--tier-0 {
+  width: 28%;
+}
+.d-food-bar-fill--tier-1 {
+  width: 55%;
+}
+.d-food-bar-fill--tier-2 {
+  width: 90%;
+}
+.seg-detail-val--accent {
+  color: var(--blue);
+}
+.d-budget-fill--pct-75 {
+  width: 75%;
+}
+.d-budget-footer-remaining {
+  font-size: 11px;
+  color: var(--green);
+}
+.d-budget-footer-meta {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+.d-sum-val--savings {
+  color: var(--green);
+}
+.stay-rec-price-mt {
+  margin-top: 8px;
+}
+.stay-radio-mt {
+  margin-top: 4px;
+}
+.travel-opt-icon--local {
+  font-size: 16px;
+}
+.hm-line--narrow {
+  width: 70%;
+}
+.h-mm-cta-mt {
+  margin-top: 8px;
+}
+
+/* States page (replaces inline demo styles) */
+.states-card-shell {
+  background: var(--card-bg);
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.states-ob-header {
+  background: #a32d2d;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.states-ob-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+.states-ob-tag {
+  font-size: 10px;
+  color: #f7c1c1;
+}
+.states-ob-body {
+  padding: 12px 14px;
+}
+.states-ob-alert {
+  background: #fcebeb;
+  border: 0.5px solid #f7c1c1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.states-ob-alert-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a32d2d;
+  margin-bottom: 3px;
+}
+.states-ob-alert-desc {
+  font-size: 11px;
+  color: #e24b4a;
+}
+.states-ob-actions {
+  display: flex;
+  gap: 8px;
+}
+.states-btn-primary {
+  flex: 1;
+  padding: 9px 6px;
+  border-radius: 8px;
+  border: none;
+  background: #a32d2d;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+.states-btn-secondary {
+  flex: 1;
+  padding: 9px 6px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
+.states-empty-cta {
+  margin-top: 14px;
+  width: 160px;
+  font-size: 12px;
+  padding: 10px;
+}
+.states-error-icon {
+  background: #fcebeb;
+}
+.states-retry-btn {
+  margin-top: 14px;
+  width: 120px;
+  font-size: 12px;
+  padding: 10px;
+  background: #a32d2d;
 }
